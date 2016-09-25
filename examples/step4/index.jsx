@@ -15,28 +15,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('app')
 );
-
-// function render() {
-//   ReactDOM.render(
-//     <Counter
-//       value={store.getState()}
-//       onIncrement={() => {
-//       	store.dispatch(counterAction.incActionCreator(3));
-//       	console.log(store.getState());
-//       }}
-//       onDecrement={() => {
-//       	store.dispatch(counterAction.decActionCreator(2));
-//       	console.log(store.getState());
-//       }}
-//       onConcat={() => {
-//       	store.dispatch(counterAction.concatActionCreator(4));
-//       	console.log(store.getState());
-//       }}
-//     />,
-//     document.getElementById('root')
-//   )
-// }
-
-//method1
-// store.subscribe(render)
-// render()
