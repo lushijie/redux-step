@@ -1,21 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {render} from 'react-dom'
+//import {render} from 'react-dom'
 import {createStore} from 'redux'
-import {Provider, connect} from 'react-redux'
-
-// Componect,action,reducer
-import Counter from './components/Counter'
-import * as counterAction from './actions/counter'
+import {Provider} from 'react-redux'
+import Counter from './components/counter'
+//import * as counterAction from './actions/counter'
 import counterReducer from './reducers/counter-index'
 
 const store = createStore(counterReducer, {concatReducer: 6, calcReducer: 10});
 
-render(
+ReactDOM.render(
   <Provider store={store}>
     <Counter />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById('app')
 );
 
 // function render() {
