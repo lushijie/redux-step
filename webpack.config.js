@@ -2,7 +2,7 @@
 * @Author: lushijie
 * @Date:   2016-02-25 15:33:13
 * @Last Modified by:   lushijie
-* @Last Modified time: 2016-09-25 18:51:09
+* @Last Modified time: 2016-09-25 19:09:38
 */
 var webpack = require('webpack');
 var path = require('path');
@@ -19,8 +19,6 @@ glob.sync('examples/'+ step +'/index.jsx').forEach(function(v, index) {
     var tmp = v.split('/');
     entryFiles['index'] = v;
 });
-
-console.log('----------',process.env)
 
 module.exports = {
     //dev=cheap-module-eval-source-map
