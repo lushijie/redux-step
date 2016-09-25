@@ -5,6 +5,8 @@ import Counter from 'components/counter'
 import * as counterAction from 'actions/counter.js'
 import counterReducer from 'reducers/counter'
 
+console.log(12313);
+
 //bindActionCreator完成的任务
 // let bindActionCreators = (actionCreator, dispatch) => {
 // 	return (...args) => dispatch(actionCreator(...args))

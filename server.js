@@ -2,15 +2,20 @@
 * @Author: lushijie
 * @Date:   2016-09-23 17:23:16
 * @Last Modified by:   lushijie
-* @Last Modified time: 2016-09-25 17:55:52
+* @Last Modified time: 2016-09-25 18:54:03
 */
-
+// 由于entryfiles没有根据publish调整所以暂时不再使用express
+// ###express运行
+// npm run publish
+// 启动express：node server.js [step1, step2, ...]
+// 浏览器访问：http://127.0.0.1:3000
 var express = require('express')
 var path = require('path')
 
 var app = express()
 var port = 3000
-var step = (JSON.stringify(process.argv[2]) || 'step1').slice(2);
+console.log(process.argv);
+var step = JSON.parse(JSON.stringify(process.argv[2]) || 'step1');
 
 app.use('/dist', express.static(path.join(__dirname, 'dist')))
 
