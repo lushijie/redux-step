@@ -5,25 +5,23 @@ import Counter from 'components/counter'
 import * as counterAction from 'actions/counter.js'
 import counterReducer from 'reducers/counter'
 
-console.log(12313);
-
 //bindActionCreator完成的任务
 // let bindActionCreators = (actionCreator, dispatch) => {
 // 	return (...args) => dispatch(actionCreator(...args))
 // }
 
 const store = createStore(counterReducer, 8);
-// var incActionCreators = bindActionCreators(counterAction.incActionCreator, store.dispatch);
+var incActionCreators = bindActionCreators(counterAction.incActionCreator, store.dispatch);
 
 function render() {
   ReactDOM.render(
     <Counter
-      value={store.getState()}
-      // onIncrement={() => incActionCreators(5)}
-      onIncrement={() => store.dispatch(counterAction.incActionCreator(3))}
-      onDecrement={() => store.dispatch(counterAction.decActionCreator(2))}
+        value={store.getState()}
+        onIncrement={() => incActionCreators(5)}
+        //onIncrement={() => store.dispatch(counterAction.incActionCreator(3))}
+        onDecrement={() => store.dispatch(counterAction.decActionCreator(2))}
     />,
-    document.getElementById('root')
+    document.getElementById('app')
   )
 }
 
