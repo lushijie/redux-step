@@ -2,20 +2,21 @@
 * @Author: lushijie
 * @Date:   2016-02-25 15:33:13
 * @Last Modified by:   lushijie
-* @Last Modified time: 2016-09-25 12:43:50
+* @Last Modified time: 2016-09-25 15:14:02
 */
 var webpack = require('webpack');
 var path = require('path');
+var moment = require('moment');
 var glob = require('glob');
 var Pconf = require('./webpack.plugin.conf.js');
 
 var NODE_ENV = JSON.parse(JSON.stringify(process.env.NODE_ENV || 'development'));
+var bannerText = 'This file is modified by lushijie at ' + moment().format('YYYY-MM-DD h:mm:ss');
 
 var entryFiles = {};
 var step = process.argv[2] || 'step1';
 glob.sync('examples/'+ step +'/index.jsx').forEach(function(v, index) {
     var tmp = v.split('/');
-    // entryFiles[tmp[1]] = v;
     entryFiles['index'] = v;
 })
 console.log(entryFiles);
@@ -39,7 +40,6 @@ module.exports = {
     module: {
         preLoaders: [
             {
-                //babel eslint
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
                 loader: 'eslint-loader'
@@ -62,9 +62,6 @@ module.exports = {
             {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
-                //include: [
-                    //path.join(__dirname, 'public/resource/js'),
-                //],
                 exclude: [
                   path.join(__dirname, 'node_modules'),
                 ],
@@ -78,16 +75,17 @@ module.exports = {
     },
     plugins: [
         Pconf.cleanPluginConf(['dist']),
-        Pconf.definePluginConf,
-        Pconf.bannerPluginConf,
-        Pconf.uglifyJsPluginConf,
-        Pconf.commonsChunkPluginConf,
-        Pconf.minChunkSizePluginConf,
-        Pconf.hotModuleReplacementPluginConf,
-        Pconf.dedupePluginConf,
-        Pconf.providePluginConf,
-        //Pconf.htmlWebPackPluginConf
-        //NODE_ENV == 'development' ? Pconf.htmlWebPackPluginConf : Pconf.noopPluginConf
+        Pconf.bannerPluginConf(bannerText),
+        //Pconf.definePluginConf(VAR_INJECT),
+        Pconf.uglifyJsPluginConf(),
+        //Pconf.extractTextPluginConf(),
+        Pconf.commonsChunkPluginConf(),
+        Pconf.minChunkSizePluginConf(),
+        Pconf.hotModuleReplacementPluginConf(),
+        // Pconf.transferWebpackPluginConf(),
+        // Pconf.dedupePluginConf(),
+        // Pconf.providePluginConf({$: 'jquery'}),
+        //Pconf.htmlWebPackPluginConf(htmlPluginOptions)
     ],
     resolve:{
         root: [
