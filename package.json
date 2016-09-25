@@ -1,16 +1,14 @@
 {
-  "name": "react-step-by-step",
-  "version": "0.0.0",
-  "description": "react",
+  "name": "react-redux",
+  "version": "1.0.0",
+  "description": "react-redux examples",
   "main": "index.js",
   "scripts": {
     "start": "npm run dev",
-    "prestart-0": "npm run chrome",
-    "chrome": "open /Applications/Google' 'Chrome.app/ http://127.0.0.1:5050/views/index.html",
     "dev": "export NODE_ENV=development && webpack-dev-server",
     "publish": "export NODE_ENV=development && webpack"
   },
-  "author": "",
+  "author": "lushijie1218@126.com",
   "license": "ISC",
   "dependencies": {
     "autobind-decorator": "^1.3.3",

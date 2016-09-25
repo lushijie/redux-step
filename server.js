@@ -2,19 +2,20 @@
 * @Author: lushijie
 * @Date:   2016-09-23 17:23:16
 * @Last Modified by:   lushijie
-* @Last Modified time: 2016-09-23 17:38:03
+* @Last Modified time: 2016-09-25 15:27:35
 */
 
 var express = require('express')
 var path = require('path')
 
 var app = express()
-var port = 5050
+var port = 3000
+var step = process.argv[2] || 'step1';
 
 app.use('/dist', express.static(path.join(__dirname, 'dist')))
 
 app.get("/", function(req, res) {
-  res.sendFile( path.join(__dirname, 'examples/', process.argv[2], 'index.html'))
+  res.sendFile( path.join(__dirname, 'examples/', step, 'index.html'))
 })
 
 app.listen(port, function(error) {
