@@ -2,7 +2,7 @@
 * @Author: lushijie
 * @Date:   2016-09-23 17:23:16
 * @Last Modified by:   lushijie
-* @Last Modified time: 2016-09-25 15:27:35
+* @Last Modified time: 2016-09-25 17:55:52
 */
 
 var express = require('express')
@@ -10,7 +10,7 @@ var path = require('path')
 
 var app = express()
 var port = 3000
-var step = process.argv[2] || 'step1';
+var step = (JSON.stringify(process.argv[2]) || 'step1').slice(2);
 
 app.use('/dist', express.static(path.join(__dirname, 'dist')))
 

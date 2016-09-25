@@ -2,7 +2,7 @@
 * @Author: lushijie
 * @Date:   2016-02-25 15:33:13
 * @Last Modified by:   lushijie
-* @Last Modified time: 2016-09-25 17:40:00
+* @Last Modified time: 2016-09-25 17:56:09
 */
 var webpack = require('webpack');
 var path = require('path');
@@ -14,15 +14,12 @@ var Pconf = require('./webpack.plugin.conf.js');
 var NODE_ENV = JSON.parse(JSON.stringify(process.env.NODE_ENV || 'development'));
 var bannerText = 'This file is modified by lushijie at ' + moment().format('YYYY-MM-DD h:mm:ss');
 
+var step = (JSON.stringify(process.argv[2]) || '--step1').slice(2);
 var entryFiles = {};
-var step = JSON.parse(JSON.stringify(process.argv[2]) || 'step1');
-
-console.log(chalk.blue(step));
 glob.sync('examples/'+ step +'/index.jsx').forEach(function(v, index) {
     var tmp = v.split('/');
     entryFiles['index'] = v;
 });
-console.log(entryFiles);
 
 module.exports = {
     //dev=cheap-module-eval-source-map
