@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run dev",
-    "prestart": "npm run chrome",
+    "prestart-0": "npm run chrome",
     "chrome": "open /Applications/Google' 'Chrome.app/ http://127.0.0.1:5050/views/index.html",
     "dev": "export NODE_ENV=development && webpack-dev-server",
     "publish": "export NODE_ENV=development && webpack"
@@ -20,7 +20,9 @@
     "react": "~15.1.0",
     "react-bootstrap": "^0.30.3",
     "react-dom": "~15.1.0",
-    "react-router": "^2.7.0"
+    "react-redux": "^4.4.5",
+    "react-router": "^2.7.0",
+    "redux": "^3.6.0"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",

@@ -2,7 +2,7 @@
 * @Author: lushijie
 * @Date:   2016-03-04 11:28:41
 * @Last Modified by:   lushijie
-* @Last Modified time: 2016-09-19 13:52:43
+* @Last Modified time: 2016-09-25 12:44:22
 */
 
 var webpack = require('webpack');
@@ -72,11 +72,16 @@ module.exports = {
 	'bannerPluginConf': new webpack.BannerPlugin('This file is created by lushijie'),
 
 	//下次打包清除上一次打包文件
-	'cleanPluginConf': new CleanPlugin(['dist'], {
-	  root: __dirname,
-	  verbose: true,
-	  dry: false
-	}),
+	'cleanPluginConf': function(paths, options) {
+        return (
+            new CleanPlugin(paths, {
+                root: __dirname,
+                verbose: true,
+                dry: false
+            })
+        )
+    },
+
 
 	//提取common文件模块
 	'commonsChunkPluginConf': new webpack.optimize.CommonsChunkPlugin({
