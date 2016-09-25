@@ -2,7 +2,7 @@
 * @Author: lushijie
 * @Date:   2016-02-25 15:33:13
 * @Last Modified by:   lushijie
-* @Last Modified time: 2016-09-25 15:14:02
+* @Last Modified time: 2016-09-25 15:58:30
 */
 var webpack = require('webpack');
 var path = require('path');
@@ -19,7 +19,6 @@ glob.sync('examples/'+ step +'/index.jsx').forEach(function(v, index) {
     var tmp = v.split('/');
     entryFiles['index'] = v;
 })
-console.log(entryFiles);
 
 module.exports = {
     //dev=cheap-module-eval-source-map
@@ -93,9 +92,8 @@ module.exports = {
         ],
         extensions: ['', '.js', '.jsx'],
         alias:{
-             'rjs': 'public/resource/js',
-             'rcss': 'public/resource/css',
-             'rimg': 'public/resource/img'
+             'components': path.join('examples/', step, 'components'),
+             'reducers': path.join('examples/', step, 'reducers')
         }
     },
     devServer: {

@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 
-import Counter from './components/Counter'
-import counterReducer from './reducers/counter-index'
+import Counter from 'components/counter'
+import CounterReducer from 'reducers/counter'
 
 //action，把数据从应用传到store的有效载荷，是store数据的唯一来源（分辨执行动作与数据的预处理）
 //reducer,action只是描述了动作，reducer负责具体的更新state
@@ -16,7 +16,7 @@ import counterReducer from './reducers/counter-index'
 //createStore(reducer, initialState),createStorinstalle返回一个对象包含 getState(),subscribe()与dispatch()方法
 //多数情况下不会直接使用subscribe这个底层API，一般使用React或者其他库绑定
 
-const store = createStore(counterReducer, 10)
+const store = createStore(CounterReducer, 10)
 console.log('初始state', store.getState());
 
 function render() {
@@ -26,15 +26,13 @@ function render() {
         onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
         onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
     />,
-    document.getElementById('root')
+    document.getElementById('app')
   )
 }
 
 //method1
 store.subscribe(render)
 render()
-
-
 
 //method 2
 // store.subscribe(() => {
