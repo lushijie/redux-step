@@ -2,7 +2,7 @@
 * @Author: lushijie
 * @Date:   2016-02-25 15:33:13
 * @Last Modified by:   lushijie
-* @Last Modified time: 2016-09-25 17:56:09
+* @Last Modified time: 2016-09-25 18:21:40
 */
 var webpack = require('webpack');
 var path = require('path');
@@ -15,6 +15,12 @@ var NODE_ENV = JSON.parse(JSON.stringify(process.env.NODE_ENV || 'development'))
 var bannerText = 'This file is modified by lushijie at ' + moment().format('YYYY-MM-DD h:mm:ss');
 
 var step = (JSON.stringify(process.argv[2]) || '--step1').slice(2);
+
+if(step.indexOf('--step') == -1){
+    console.log(chalk.red('运行参数不正确，请阅读readme.md'));
+    return;
+}
+
 var entryFiles = {};
 glob.sync('examples/'+ step +'/index.jsx').forEach(function(v, index) {
     var tmp = v.split('/');
