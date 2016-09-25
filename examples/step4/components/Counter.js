@@ -5,21 +5,24 @@ import './counter.scss';
 
 class Counter extends Component {
   render() {
-    const {dispatch} = this.props;
+    const {dispatch, concatState, calcState} = this.props;
     return (
       <p>
         <button className="btn" onClick={() => {
           dispatch(counterAction.incActionCreator(3));
+          console.log('current calcState:', calcState);
         }}>
           +
         </button>
         <button className="btn" onClick={() => {
           dispatch(counterAction.decActionCreator(2));
+          console.log('current calcState:', calcState);
         }}>
           -
         </button>
         <button className="btn" onClick={() => {
           dispatch(counterAction.concatActionCreator(4));
+          console.log('current concatState', concatState);
         }}>
           +(concat)
         </button>
@@ -28,4 +31,13 @@ class Counter extends Component {
   }
 }
 
-export default connect()(Counter)
+function mapStateToProps(state) {
+  return (
+      {
+        concatState: state.concatState,
+        calcState: state.calcState
+      }
+  );
+}
+
+export default connect(mapStateToProps)(Counter)

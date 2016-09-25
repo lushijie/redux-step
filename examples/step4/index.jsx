@@ -7,7 +7,7 @@ import Counter from './components/counter';
 //import * as counterAction from './actions/counter';
 import counterReducer from './reducers/counter-index';
 
-const store = createStore(counterReducer, {concatReducer: 6, calcReducer: 10});
+const store = createStore(counterReducer, {concatState: 6, calcState: 10});
 
 ReactDOM.render(
   <Provider store={store}>
