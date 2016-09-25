@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import concatReducer from './counter-concat'
-import calcReducer from './counter-calc'
+import concatState from './counter-concat'
+import calcState from './counter-calc'
 
 export default combineReducers({
-  concatReducer,
-  calcReducer
+  concatState,
+  calcState
 })
