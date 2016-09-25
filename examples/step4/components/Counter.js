@@ -1,10 +1,11 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import * as counterAction from '../actions/counter'
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import * as counterAction from '../actions/counter';
+import './counter.scss';
 
 class Counter extends Component {
   render() {
-    const {dispatch} = this.props
+    const {dispatch} = this.props;
     return (
       <p>
         <button className="btn" onClick={() => {
