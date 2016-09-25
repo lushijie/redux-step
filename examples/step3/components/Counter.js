@@ -1,34 +1,35 @@
-import React, { Component, PropTypes } from 'react'
+import React, {PropTypes} from 'react';
+import Autobind from 'autobind-decorator';
+//import ClassNames from 'classnames';
 
-class Counter extends Component {
+import './counter.scss';
+
+@Autobind
+export default class Counter extends React.Component {
+
+  static propTypes = {
+    // 替代原propTypes 属性,注意前面有static,属于静态方法.
+    //value: PropTypes.number.isRequired,
+    onIncrement: PropTypes.func.isRequired,
+    onDecrement: PropTypes.func.isRequired,
+    onConcat: PropTypes.func.isRequired
+  }
+
   constructor(props) {
     super(props)
   }
+
   render() {
-    const { onIncrement, onDecrement, onConcat } = this.props
+    const { onIncrement, onDecrement, onConcat } = this.props;
     return (
       <p>
-        {' '}
-        <button onClick={onIncrement}>
-          +
-        </button>
-        {' '}
-        <button onClick={onDecrement}>
-          -
-        </button>
-        {' '}
-        <button onClick={onConcat}>
-          +(concat)
-        </button>
+        clickButton：
+        <button onClick={onIncrement} className="btn"> + </button>
+        <button onClick={onDecrement} className="btn"> - </button>
+        <button onClick={onConcat} className="btn"> concat </button>
       </p>
     )
   }
 }
 
-Counter.propTypes = {
-  onIncrement: PropTypes.func.isRequired,
-  onDecrement: PropTypes.func.isRequired,
-  onConcat: PropTypes.func.isRequired
-}
 
-export default Counter
