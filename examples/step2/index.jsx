@@ -1,14 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { bindActionCreators, createStore } from 'redux'
-import Counter from 'components/counter'
-import * as counterAction from 'actions/counter.js'
-import counterReducer from 'reducers/counter'
-
-//bindActionCreator完成的任务
-// let bindActionCreators = (actionCreator, dispatch) => {
-// 	return (...args) => dispatch(actionCreator(...args))
-// }
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { bindActionCreators, createStore } from 'redux';
+import Counter from 'components/counter';
+import * as counterAction from 'actions/counter.js';
+import counterReducer from 'reducers/counter';
 
 const store = createStore(counterReducer, 8);
 var incActionCreators = bindActionCreators(counterAction.incActionCreator, store.dispatch);
@@ -26,6 +21,6 @@ function render() {
 }
 
 //组件渲染
-store.subscribe(render)
-render()
+store.subscribe(render);
+render();
 
