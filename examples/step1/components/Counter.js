@@ -2,6 +2,8 @@ import React, {PropTypes} from 'react';
 import Autobind from 'autobind-decorator';
 //import ClassNames from 'classnames';
 
+import './counter.scss';
+
 @Autobind
 export default class Counter extends React.Component {
 
@@ -21,15 +23,8 @@ export default class Counter extends React.Component {
     return (
       <p>
         Clicked: {value} times
-        {' '}
-        <button onClick={onIncrement}>
-          +
-        </button>
-        {' '}
-        <button onClick={onDecrement}>
-          -
-        </button>
-        {' '}
+        <button onClick={onIncrement} className="btn"> + </button>
+        <button onClick={onDecrement} className="btn"> - </button>
       </p>
     )
   }
