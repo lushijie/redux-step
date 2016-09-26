@@ -5,7 +5,8 @@ import './counter.scss';
 
 class Counter extends Component {
   render() {
-    const {dispatch, calcState, concatState} = this.props;
+    const {dispatch, calcState, concatState, ownProps} = this.props;
+    console.log(ownProps);
     return (
       <div>
         <div>
