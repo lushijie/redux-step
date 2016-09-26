@@ -20,14 +20,15 @@ export default class Counter extends React.Component {
   }
 
   render() {
-    const { onIncrement, onDecrement, onConcat } = this.props;
+    const { value, onIncrement, onDecrement, onConcat } = this.props;
     return (
-      <p>
-        clickButton：
+      <div>
+        <h3>concatState= {value.concatState}</h3>
+        <h3>calcState= {value.calcState}</h3>
         <button onClick={onIncrement} className="btn"> + </button>
         <button onClick={onDecrement} className="btn"> - </button>
         <button onClick={onConcat} className="btn"> concat </button>
-      </p>
+      </div>
     )
   }
 }
