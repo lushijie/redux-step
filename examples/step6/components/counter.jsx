@@ -6,9 +6,10 @@ import './counter.scss';
 
 class Counter extends Component {
   render() {
-    const {calcState, concatState, actions} = this.props;
+    const {calcState, concatState, actions, ownProps} = this.props;
     console.log('this.props', this.props);
     console.log('actions', actions);
+    console.log('ownProps', ownProps);
     return (
       <div>
         <div>
@@ -39,7 +40,7 @@ class Counter extends Component {
   }
 }
 
-function mapStateToProps(state) {
+const mapStateToProps = (state) => {
   return (
       {
         concatState: state.concatState,
@@ -48,7 +49,7 @@ function mapStateToProps(state) {
   );
 }
 
-function mapDispathToProps(dispatch) {
+const mapDispathToProps = (dispatch) => {
   return (
     {
       actions: bindActionCreators(counterAction , dispatch)
@@ -56,4 +57,23 @@ function mapDispathToProps(dispatch) {
   );
 }
 
-export default connect(mapStateToProps, mapDispathToProps)(Counter)
+const mergeProps = (stateProps, dispatchProps, ownProps) => {
+  // return方式可以灵活改变
+  // return (
+  //   {
+  //     ...ownProps,
+  //     state: stateProps,
+  //     actions: dispatchProps
+  //   }
+  // )
+
+  return (
+    {
+      ...ownProps,
+      ...stateProps,
+      ...dispatchProps
+    }
+  )
+}
+
+export default connect(mapStateToProps, mapDispathToProps, mergeProps)(Counter)
