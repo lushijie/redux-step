@@ -13,3 +13,7 @@
 
 ### mergeProps
     props 的merge操作，可以不传递
+
+### Redux-logger
+    Redux-logger 中间件输出的 action 日志，它们清晰地反映了业务逻辑是怎样的
+
