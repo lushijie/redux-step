@@ -6,7 +6,14 @@ import Counter from 'components/counter';
 import * as counterAction from 'actions/counter.js';
 import counterReducer from 'reducers/counter';
 
-const store = createStore(counterReducer, 8, applyMiddleware(thunk));
+//applyMiddleWare way 1
+//const store = createStore(counterReducer, 8, applyMiddleware(thunk));
+
+//applyMiddleWare way 2
+//const finalCreateStore = applyMiddleware(promiseMiddleware, warningMiddleware, ...)(createStore)
+var finalCreateStore = applyMiddleware(thunk)(createStore);
+const store = finalCreateStore(counterReducer, 8);
+
 let incActionCreators = bindActionCreators(counterAction.incActionCreator, store.dispatch);
 let asyncIncActionCreators = bindActionCreators(counterAction.asyncIncActionCreator, store.dispatch);
 
