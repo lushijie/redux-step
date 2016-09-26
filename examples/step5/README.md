@@ -1,3 +1,4 @@
+#Redux Lesson4 —— 异步Action
 ###Redux 同步数据流
     view -> actionCreator -> action -> reducer -> newState -> component -> view
 

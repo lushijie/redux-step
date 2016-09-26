@@ -1,4 +1,4 @@
-#Redux Lesson2
+#Redux Lesson2 —— bindActionCreator
 
 ###bindActionCreator
     //bindActionCreators 实际完成的功能

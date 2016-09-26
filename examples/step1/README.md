@@ -1,4 +1,4 @@
-#Redux Lesson1
+#Redux Lesson1 —— createStore
 
 > **Redux 核心概念**
 
