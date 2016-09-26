@@ -11,7 +11,7 @@ const store = createStore(counterReducer, {concatState: 6, calcState: 10});
 
 ReactDOM.render(
   <Provider store={store}>
-    <Counter />
+    <Counter custom={{"msg": "This is ownProps!"}} />
   </Provider>,
   document.getElementById('app')
 );

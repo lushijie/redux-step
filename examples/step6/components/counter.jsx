@@ -42,6 +42,8 @@ class Counter extends Component {
 
 const mapStateToProps = (state) => {
   return (
+      //一般一个组件使用一个state，这里只是为了达到演示
+      //{state: state.concatState}
       {
         concatState: state.concatState,
         calcState: state.calcState
@@ -58,15 +60,6 @@ const mapDispathToProps = (dispatch) => {
 }
 
 const mergeProps = (stateProps, dispatchProps, ownProps) => {
-  // return方式可以灵活改变
-  // return (
-  //   {
-  //     ...ownProps,
-  //     state: stateProps,
-  //     actions: dispatchProps
-  //   }
-  // )
-
   return (
     {
       ...ownProps,
@@ -74,6 +67,14 @@ const mergeProps = (stateProps, dispatchProps, ownProps) => {
       ...dispatchProps
     }
   )
+  // return方式可以根据实际情况灵活改变,如
+  // return (
+  //   {
+  //     ...ownProps,
+  //     state: stateProps,
+  //     ...dispatchProps
+  //   }
+  // )
 }
 
 export default connect(mapStateToProps, mapDispathToProps, mergeProps)(Counter)
