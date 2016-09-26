@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
 import { bindActionCreators, createStore, applyMiddleware} from 'redux';
+import createLogger from 'redux-logger';
 import Counter from 'components/counter';
 import * as counterAction from 'actions/counter.js';
 import counterReducer from 'reducers/counter';
@@ -11,7 +12,8 @@ import counterReducer from 'reducers/counter';
 
 //applyMiddleWare way 2
 //const finalCreateStore = applyMiddleware(promiseMiddleware, warningMiddleware, ...)(createStore)
-var finalCreateStore = applyMiddleware(thunk)(createStore);
+const logger = createLogger();
+let finalCreateStore = applyMiddleware(thunk, logger)(createStore);
 const store = finalCreateStore(counterReducer, 8);
 
 let incActionCreators = bindActionCreators(counterAction.incActionCreator, store.dispatch);
