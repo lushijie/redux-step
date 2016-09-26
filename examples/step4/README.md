@@ -6,10 +6,12 @@
     view -> asyncActionCreator -> action -> reducer -> newState -> component -> view
 
 ###Middleware
-    function(action) {
-        // 调用后面的 middleware
-        next(action)
-    }
+    Redux中的middleware只是针对于dispatch方法做了middleware处理，也就是说只接受一个action对象
+    const createStoreWithMiddleware = applyMiddleware(
+      thunkMiddleware,
+      loggerMiddleware
+    )(createStore);
+    let store = createStoreWithMiddleware(rootReducer, initialState);
 
 ###Redux-thunk
-    thunk的本质是封装表达式的函数，可以延迟执行表达式
+    thunk的本质是封装表达式的函数，可以延迟执行表达式（alternative redux-saga）
