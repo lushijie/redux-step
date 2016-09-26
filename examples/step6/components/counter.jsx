@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as counterAction from '../actions/counter';
+import {bindActionCreators} from 'redux';
 import './counter.scss';
 
 class Counter extends Component {
   render() {
-    const {dispatch, calcState, concatState} = this.props;
+    const {calcState, concatState, actions} = this.props;
     console.log('this.props', this.props);
+    console.log('actions', actions);
     return (
       <div>
         <div>
@@ -15,19 +17,19 @@ class Counter extends Component {
         </div>
 
         <button className="btn" onClick={() => {
-          dispatch(counterAction.incActionCreator(3));
+          actions.incActionCreator(3);
           console.log('calcState when click:', calcState);
         }}>
           +
         </button>
         <button className="btn" onClick={() => {
-          dispatch(counterAction.decActionCreator(2));
+          actions.decActionCreator(2);
           console.log('calcState when click:', calcState);
         }}>
           -
         </button>
         <button className="btn" onClick={() => {
-          dispatch(counterAction.concatActionCreator(4));
+          actions.concatActionCreator(4);
           console.log('concatState when click', concatState);
         }}>
           +(concat)
@@ -46,4 +48,12 @@ function mapStateToProps(state) {
   );
 }
 
-export default connect(mapStateToProps)(Counter)
+function mapDispathToProps(dispatch) {
+  return (
+    {
+      actions: bindActionCreators(counterAction , dispatch)
+    }
+  );
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(Counter)
