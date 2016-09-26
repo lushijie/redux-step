@@ -1,5 +1,7 @@
 #Redux Lesson6 —— Connect
 
+###connect
+    Connect 组件主要为 React 组件提供 store 中的部分 state 数据 及 dispatch 方法
 ###mapStateToProps
     当它被connect调用的时候会为它传递参数state和props
     mapStateToProps需要负责的事情就是 返回需要传递给子组件的State,connect会拿到返回的数据写入到react组件中,
