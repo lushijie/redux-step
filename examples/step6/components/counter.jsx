@@ -6,10 +6,10 @@ import './counter.scss';
 
 class Counter extends Component {
   render() {
-    const {calcState, concatState, actions, ownProps} = this.props;
+    const {calcState, concatState, actions, custom} = this.props;
     console.log('this.props', this.props);
-    console.log('actions', actions);
-    console.log('ownProps', ownProps);
+    //console.log('actions', actions);
+    console.log('ownProps', custom);
     return (
       <div>
         <div>
@@ -19,19 +19,19 @@ class Counter extends Component {
 
         <button className="btn" onClick={() => {
           actions.incActionCreator(3);
-          console.log('calcState when click:', calcState);
+          //console.log('calcState when click:', calcState);
         }}>
           +
         </button>
         <button className="btn" onClick={() => {
           actions.decActionCreator(2);
-          console.log('calcState when click:', calcState);
+          //console.log('calcState when click:', calcState);
         }}>
           -
         </button>
         <button className="btn" onClick={() => {
           actions.concatActionCreator(4);
-          console.log('concatState when click', concatState);
+          //console.log('concatState when click', concatState);
         }}>
           +(concat)
         </button>

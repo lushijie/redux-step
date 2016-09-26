@@ -11,10 +11,10 @@ import counterReducer from 'reducers/counter';
 //const store = createStore(counterReducer, 8, applyMiddleware(thunk));
 
 //applyMiddleWare way 2
-//const finalCreateStore = applyMiddleware(promiseMiddleware, warningMiddleware, ...)(createStore)
+//const enhanceCreateStore = applyMiddleware(promiseMiddleware, warningMiddleware, ...)(createStore)
 const logger = createLogger();
-let finalCreateStore = applyMiddleware(thunk, logger)(createStore);
-const store = finalCreateStore(counterReducer, 8);
+let enhanceCreateStore = applyMiddleware(thunk, logger)(createStore);
+const store = enhanceCreateStore(counterReducer, 8);
 
 let incActionCreators = bindActionCreators(counterAction.incActionCreator, store.dispatch);
 let asyncIncActionCreators = bindActionCreators(counterAction.asyncIncActionCreator, store.dispatch);
