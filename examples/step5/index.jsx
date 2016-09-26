@@ -7,15 +7,15 @@ import * as counterAction from 'actions/counter.js';
 import counterReducer from 'reducers/counter';
 
 const store = createStore(counterReducer, 8, applyMiddleware(thunk));
-var incActionCreators = bindActionCreators(counterAction.incActionCreator, store.dispatch);
-
+let incActionCreators = bindActionCreators(counterAction.incActionCreator, store.dispatch);
+let asyncIncActionCreators = bindActionCreators(counterAction.asyncIncActionCreator, store.dispatch);
 
 function render() {
   ReactDOM.render(
     <Counter
         value={store.getState()}
         onIncrement={() => incActionCreators(3)}
-        onAsyncIncrement={() => store.dispatch(counterAction.asyncIncActionCreator(2))}
+        onAsyncIncrement={() => asyncIncActionCreators(2)}
         onDecrement={() => store.dispatch(counterAction.decActionCreator(3))}
         onAsyncDecrement={() => store.dispatch(counterAction.asyncDecActionCreator(2))}
     />,
