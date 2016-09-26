@@ -1,26 +1,37 @@
 export const actionTypes = {
 	INCREMENT: 'INCREMENT',
+	ASYNCINCREMENT: 'ASYNCINCREMENT',
 	DECREMENT: 'DECREMENT',
-	CONCAT: 'CONCAT'
+	ASYNCDECREMENT: 'ASYNCDECREMENT'
 }
 
-export const incActionCreator = (step) => {
+export function incActionCreator(step) {
 	return {
 		type: actionTypes.INCREMENT,
 		step
 	}
 }
 
-export const decActionCreator = (step) => {
+export function asyncIncActionCreator(step) {
+	return function (dispatch) {
+		setTimeout(() => {
+			dispatch({type: actionTypes.ASYNCINCREMENT, step: step});
+		}, 2000);
+	}
+}
+
+export function decActionCreator(step) {
 	return {
 		type: actionTypes.DECREMENT,
 		step
 	}
 }
 
-export const concatActionCreator = (value) => {
-	return {
-		type: actionTypes.CONCAT,
-		value
+export function asyncDecActionCreator(step) {
+	return function (dispatch) {
+		setTimeout(() => {
+			dispatch({type: actionTypes.ASYNCDECREMENT, step: step});
+		}, 2000);
 	}
 }
+
