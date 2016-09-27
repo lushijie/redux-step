@@ -2,7 +2,7 @@
 * @Author: lushijie
 * @Date:   2016-02-25 15:33:13
 * @Last Modified by:   lushijie
-* @Last Modified time: 2016-09-25 19:09:38
+* @Last Modified time: 2016-09-27 15:29:45
 */
 var webpack = require('webpack');
 var path = require('path');
@@ -12,7 +12,30 @@ var chalk = require('chalk');
 var Pconf = require('./webpack.plugin.conf.js');
 
 var NODE_ENV = JSON.parse(JSON.stringify(process.env.NODE_ENV || 'development'));
-var bannerText = 'This file is modified by lushijie at ' + moment().format('YYYY-MM-DD h:mm:ss');
+var bannerOptions = 'This file is modified by lushijie at ' + moment().format('YYYY-MM-DD h:mm:ss');
+var DEFINE_INJECT = {
+    ENV:{
+        'a': JSON.stringify('development variable'),
+        //替换规则是 API_URL = 后面的值，所以要添加 JSON.stringify
+        'API_URL': JSON.stringify('http://localhost/url'),
+        //Please keep process.env
+        'process.env': {
+            //Note: by default, React will be in development mode, which is slower, and not advised for production.
+            NODE_ENV: JSON.stringify('development')
+        }
+    },
+    PUB:{
+        'a': 123123,
+        'API_URL': JSON.stringify('http://online/url'),
+        //Please keep process.env
+        'process.env': {
+            NODE_ENV: JSON.stringify('production')
+        }
+    }
+};
+var definePluginOptions = {DEFINE_INJECT: DEFINE_INJECT[NODE_ENV == 'development' ? 'ENV':'PUB']};
+
+
 var step = 'step' + (process.env.npm_config_step || 1);
 var entryFiles = {};
 glob.sync('examples/'+ step +'/index.jsx').forEach(function(v, index) {
@@ -23,7 +46,7 @@ glob.sync('examples/'+ step +'/index.jsx').forEach(function(v, index) {
 module.exports = {
     //dev=cheap-module-eval-source-map
     //online=cheap-module-source-map
-    devtool: 'cheap-module-eval-source-map',
+    devtool: (NODE_ENV == 'development') ? 'cheap-module-eval-source-map' : 'cheap-module-source-map',
 
     context: __dirname,
 
@@ -74,13 +97,13 @@ module.exports = {
     },
     plugins: [
         Pconf.cleanPluginConf(['dist']),
-        Pconf.bannerPluginConf(bannerText),
-        //Pconf.definePluginConf(VAR_INJECT),
+        Pconf.bannerPluginConf(bannerOptions),
+        Pconf.definePluginConf(definePluginOptions),
         Pconf.uglifyJsPluginConf(),
-        //Pconf.extractTextPluginConf(),
         Pconf.commonsChunkPluginConf(),
         Pconf.minChunkSizePluginConf(),
         Pconf.hotModuleReplacementPluginConf(),
+        //Pconf.extractTextPluginConf(),
         // Pconf.transferWebpackPluginConf(),
         // Pconf.dedupePluginConf(),
         // Pconf.providePluginConf({$: 'jquery'}),
