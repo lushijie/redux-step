@@ -2,7 +2,7 @@
 * @Author: lushijie
 * @Date:   2016-02-25 15:33:13
 * @Last Modified by:   lushijie
-* @Last Modified time: 2016-09-27 15:29:45
+* @Last Modified time: 2016-09-28 10:35:34
 */
 var webpack = require('webpack');
 var path = require('path');
@@ -79,7 +79,7 @@ module.exports = {
             },
             {
                 test: /\.(png|jpg|gif|ttf|eot|svg|woff|woff2)$/,
-                loader: 'url-loader?limit=8192&name=./img/[name].[ext]'
+                loader: 'url-loader?limit=8192&name=./assets/[name].[ext]'
             },
             {
                 test: /\.jsx?$/,
