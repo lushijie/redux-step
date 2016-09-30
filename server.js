@@ -2,9 +2,9 @@
 * @Author: lushijie
 * @Date:   2016-09-23 17:23:16
 * @Last Modified by:   lushijie
-* @Last Modified time: 2016-09-25 18:54:03
+* @Last Modified time: 2016-09-30 17:20:45
 */
-// 由于entryfiles没有根据publish调整所以暂时不再使用express
+// 【注：由于entryfiles没有根据publish调整所以暂时不再使用express】
 // ###express运行
 // npm run publish
 // 启动express：node server.js [step1, step2, ...]
