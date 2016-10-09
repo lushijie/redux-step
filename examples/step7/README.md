@@ -1,4 +1,4 @@
-#Redux Lesson6 —— devTools
+#Redux Lesson7 —— devTools
 
 ### Redux-devTools
     实时的监控Redux的状态树的Store,用createDevTools()创建的DevTools组件有个特殊的静态方法instrument(),它返回一个store的增强器,在开发中你需要在compose中使用。注意：DevTools.instrument()要放在applyMiddleware后，因为你的applyMiddleware可以存在异步行为，为了确保所有的actions显示在store中，所以要放在后面
