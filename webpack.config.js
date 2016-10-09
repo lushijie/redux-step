@@ -2,7 +2,7 @@
 * @Author: lushijie
 * @Date:   2016-02-25 15:33:13
 * @Last Modified by:   lushijie
-* @Last Modified time: 2016-09-28 10:35:34
+* @Last Modified time: 2016-10-09 15:46:18
 */
 var webpack = require('webpack');
 var path = require('path');
@@ -117,7 +117,8 @@ module.exports = {
         alias:{
             'actions': path.join('examples/', step, 'actions'),
             'components': path.join('examples/', step, 'components'),
-            'reducers': path.join('examples/', step, 'reducers')
+            'reducers': path.join('examples/', step, 'reducers'),
+            'containers': path.join('examples/', step, 'containers')
         }
     },
     devServer: {
