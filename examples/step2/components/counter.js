@@ -1,10 +1,8 @@
 import React, {PropTypes} from 'react';
-import Autobind from 'autobind-decorator';
-//import ClassNames from 'classnames';
 
 import './counter.scss';
 
-@Autobind
+@autobind
 export default class Counter extends React.Component {
 
   static propTypes = {
