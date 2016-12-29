@@ -2,14 +2,14 @@
  * @Author: lushijie
  * @Date:   2016-02-25 15:33:13
  * @Last Modified by:   lushijie
- * @Last Modified time: 2016-11-15 10:01:15
+ * @Last Modified time: 2016-12-29 09:34:57
  */
 var webpack = require('webpack');
 var path = require('path');
 var glob = require('glob');
 var chalk = require('chalk');
-var setting = require('./webpack.setting.js');
-var Pconf = require('./webpack.plugin.conf.js');
+var setting = require('./webpack/webpack.config.setting.js');
+var Pconf = require('./webpack/webpack.plugin.conf.js');
 
 var step = 'step' + (process.env.npm_config_step || 1);
 var entryFiles = {};
